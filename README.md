@@ -1,1 +1,1 @@
-# Binaerrechner
+# Binärrechner
