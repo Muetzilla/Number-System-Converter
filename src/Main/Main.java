@@ -10,8 +10,8 @@ public class Main {
         String hexNum = hex.toHex(3984672);
         String binear = tb.tobinaer(1236);
 
-        System.out.println(binear);
-        System.out.println(hexNum);
+        System.out.println( "1236 in binär: " + binear);
+        System.out.println("3984672 in hex: " + hexNum);
     }
     public static void main(String[] args) {
         new Main();
