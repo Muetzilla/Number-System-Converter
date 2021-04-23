@@ -38,7 +38,7 @@ public class Main {
             if(inputFrom == 1){
                 inputDec = scanner.nextInt();
                 scanner.nextLine();
-                System.out.println("Your Decimal input: " +inputDec);
+                System.out.println("Your decimal input: " +inputDec);
             }else{
                 inputBinOctHex = scanner.nextLine();
                 scanner.nextLine();
