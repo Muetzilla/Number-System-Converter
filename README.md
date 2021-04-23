@@ -1,1 +1,2 @@
-# Binärrechner
+# Binär und Hex Rechner
+
