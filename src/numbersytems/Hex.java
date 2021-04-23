@@ -1,6 +1,4 @@
-package hex;
-
-import binaer.ToBinaer;
+package numbersytems;
 
 public class Hex {
         public String toHex(int dec){
@@ -12,7 +10,7 @@ public class Hex {
             return dec;
         }
         public String hexToBinar(String hex){
-            ToBinaer tob = new ToBinaer();
+            Binary tob = new Binary();
             int dec = hexToDec(hex);
             String binr = tob.tobinaer(dec);
             return binr;

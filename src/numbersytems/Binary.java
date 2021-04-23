@@ -1,6 +1,6 @@
-package binaer;
+package numbersytems;
 
-public class ToBinaer {
+public class Binary {
     public String tobinaer(int dec){
         String binr = Integer.toBinaryString(dec);
         return binr;
