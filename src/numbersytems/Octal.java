@@ -1,4 +1,4 @@
 package numbersytems;
 
-public class Octal {
+public class Octal implements Numbersystems{
 }

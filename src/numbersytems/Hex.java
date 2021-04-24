@@ -1,6 +1,6 @@
 package numbersytems;
 
-public class Hex {
+public class Hex implements Numbersystems{
         public String toHex(int dec){
             String hex = Integer.toHexString(dec);
             return hex;
@@ -9,10 +9,10 @@ public class Hex {
             int dec = Integer.parseInt(hex, 16);
             return dec;
         }
-        public String hexToBinar(String hex){
-            Binary tob = new Binary();
+        public String hexToBinary(String hex){
+            Binary binaryClass = new Binary();
             int dec = hexToDec(hex);
-            String binr = tob.tobinaer(dec);
-            return binr;
+            String binary = binaryClass.tobinaer(dec);
+            return binary;
         }
 }
