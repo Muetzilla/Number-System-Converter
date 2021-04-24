@@ -4,12 +4,10 @@ import numbersytems.*;
 
 import java.util.Scanner;
 
-public class Main {
+public class ConsoleVersion {
 
-    public Main(){
+    public ConsoleVersion(){
         interaction();
-
-
     }
 
     private void interaction() {
@@ -74,6 +72,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        new Main();
+        new ConsoleVersion();
     }
 }
