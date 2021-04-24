@@ -1,24 +1,24 @@
 package Main;
 
-import numbersytems.Binary;
-import numbersytems.Hex;
-import numbersytems.Numbersystems;
+import numbersytems.*;
 
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
 import java.util.Scanner;
 
 public class Main {
-    Binary tb =  new Binary();
-    Hex hex =  new Hex();  
+
     public Main(){
         inertaction();
 
+        /*
+        Binary tb =  new Binary();
+        Hex hex =  new Hex();
         String hexNum = hex.toHex(3984672);
-        String binear = tb.tobinaer(1236);
+        String binear = tb.toBinary(1236);
 
         System.out.println( "1236 in binär: " + binear);
         System.out.println("3984672 in hex: " + hexNum);
+
+         */
     }
 
     private void inertaction() {
@@ -26,58 +26,68 @@ public class Main {
         boolean continueB = true;
         int inputFrom = 0;
         int inputTo = 0;
-        String inputBinOctHexDec = "";
-        boolean validInput = false;
+        String input = "";
+        NumbersystemFromIntToString nsIntToString = new NumbersystemFromIntToString();
+        FromToNumbersystems ftns = new FromToNumbersystems();
         do{
             inputFrom = getInputFrom(scanner);
+            input = getInput(scanner);
+            try{
+                Numbersystemsinterface sourceNumbersystem = ftns.makeNumbersystems(inputFrom, input);
+                inputTo = getInputTo(scanner);
+                String result = ftns.toTarget(inputTo, sourceNumbersystem);
+                System.out.println(input + " in the " + nsIntToString.numbersystemIntToString(inputFrom) + " is " +  result + " in the " + nsIntToString.numbersystemIntToString(inputTo));
+            }catch(NumberFormatException e){
+                System.out.println(input + " is not a valid input for " + nsIntToString.numbersystemIntToString(inputFrom)+ "! Please try again.");
 
-                inputBinOctHexDec = getInput(scanner);
-                switch(inputFrom){
+            }
+            /*
+            switch(inputFrom){
                     case 1:
                         try{
-                            int dec = Integer.parseInt(inputBinOctHexDec, 10);
+                            int dec = Integer.parseInt(input, 10);
                             System.out.println("Your decimal input is: " + dec);
                             validInput = true;
                         }catch(NumberFormatException e){
-                            System.out.println(inputBinOctHexDec + " is an invalid input in the decimal system! Please try again");
+                            System.out.println(input + " is an invalid input in the decimal system! Please try again");
                         }
                         break;
                     case 2:
                         try{
-                            int hex = Integer.parseInt(inputBinOctHexDec, 16);
+                            int hex = Integer.parseInt(input, 16);
                             System.out.println("Your hexadecimal input is in the decimal system: " + hex);
-                            System.out.println("Your hexadecimal input is: " + inputBinOctHexDec);
+                            System.out.println("Your hexadecimal input is: " + input);
                             validInput = true;
                         }catch(NumberFormatException e){
-                            System.out.println(inputBinOctHexDec + " is an invalid input in the hexadecimal system! Please try again");
+                            System.out.println(input + " is an invalid input in the hexadecimal system! Please try again");
                         }
                         break;
                     case 3:
                         try{
-                            new Binary(inputBinOctHexDec);
-                            System.out.println("Your binary input is in the decimal system: " + binr);
-                            System.out.println("Your binary input is: " + inputBinOctHexDec);
+                            new Binary(input);
+                            System.out.println("Your binary input is in the decimal system: " );
+                            System.out.println("Your binary input is: " + input);
                             validInput = true;
                         }catch(NumberFormatException e){
-                            System.out.println(inputBinOctHexDec + " is an invalid input in the binary system! Please try again");
+                            System.out.println(input + " is an invalid input in the binary system! Please try again");
                         }
                         break;
                     case 4:
                         try{
-                            int oct = Integer.parseInt(inputBinOctHexDec, 8);
+                            int oct = Integer.parseInt(input, 8);
                             System.out.println("Your octal input is in the decimal system: " + oct);
-                            System.out.println("Yout octal input is: " + inputBinOctHexDec);
+                            System.out.println("Yout octal input is: " + input);
 
                             validInput = true;
                         }catch(NumberFormatException e){
-                            System.out.println(inputBinOctHexDec + " is an invalid input in the octal system! Please try again");
+                            System.out.println(input + " is an invalid input in the octal system! Please try again");
 
                         }
                         break;
                 }
-                getInputTo(scanner);
+                */
 
-            System.out.println("Ausgabe im gewünschten Zahlensystem...");
+
         }while(continueB);
     }
 
@@ -121,23 +131,4 @@ public class Main {
     public static void main(String[] args) {
         new Main();
     }
-
-    private Numbersystems makeNumbersystems(int sourceSystem, String input) {
-        switch (sourceSystem) {
-            case 3:
-                return new Binary(input);
-            default:
-                throw new RuntimeException("Invalid source system " + sourceSystem);
-        }
-    }
-
-    private String toTarget(int targetSystem, Numbersystems numbersystems) {
-        switch (targetSystem) {
-            case 3:
-                return numbersystems.toBinary();
-            default:
-                throw new RuntimeException("Invalid target system " + targetSystem);
-        }
-    }
-
 }

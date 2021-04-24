@@ -1,6 +1,8 @@
 package numbersytems;
 
-public class Binary implements Numbersystems{
+import static java.lang.String.valueOf;
+
+public class Binary extends Numbersystems {
 
     private final int number;
 
@@ -8,8 +10,8 @@ public class Binary implements Numbersystems{
         this.number = Integer.parseInt(binaryString, 2);
     }
 
-    public String toBinary(){
-        String binr = Integer.toBinaryString(number;
-        return binr;
+    @Override
+    public int getInt() {
+        return number;
     }
 }
