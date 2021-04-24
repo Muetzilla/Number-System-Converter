@@ -97,7 +97,7 @@ public class SwingVersion extends JFrame implements ActionListener {
                     result = ftns.toTarget(targetSystem, sourceNumbersystem);
                     resultTextfield.setText(result);
                 } catch (NumberFormatException ex) {
-                    errorLabel.setText(input + " is a invalid input in the " + ftns.numbersystemIntToString(sourceSystem));
+                    errorLabel.setText(input + " is an invalid input in the " + ftns.numbersystemIntToString(sourceSystem));
                 }
             }
 
