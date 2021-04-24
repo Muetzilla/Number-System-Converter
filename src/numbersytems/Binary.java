@@ -2,7 +2,7 @@ package numbersytems;
 
 import static java.lang.String.valueOf;
 
-public class Binary extends Numbersystems {
+public class Binary extends AbstractNumbersystem {
 
     private final int number;
 
@@ -13,5 +13,9 @@ public class Binary extends Numbersystems {
     @Override
     public int getInt() {
         return number;
+    }
+    @Override
+    public String toString(){
+        return "binary system";
     }
 }

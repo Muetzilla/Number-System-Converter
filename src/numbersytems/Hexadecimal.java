@@ -2,7 +2,7 @@ package numbersytems;
 
 import static java.lang.String.valueOf;
 
-public class Hexadecimal extends Numbersystems{
+public class Hexadecimal extends AbstractNumbersystem {
        /*
        public String toHex(int dec){
 
@@ -31,5 +31,9 @@ public class Hexadecimal extends Numbersystems{
     @Override
     public int getInt() {
         return number;
+    }
+    @Override
+    public String toString(){
+        return "hexadecimal system";
     }
 }

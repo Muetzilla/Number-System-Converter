@@ -1,6 +1,6 @@
 package numbersytems;
 
-public abstract class Numbersystems implements Numbersystemsinterface{
+public abstract class AbstractNumbersystem implements Numbersystem {
     @Override
     public String toBinary() {
         String binary = Integer.toBinaryString(getInt());

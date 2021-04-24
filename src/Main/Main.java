@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main {
 
     public Main(){
-        inertaction();
+        interaction();
 
         /*
         Binary tb =  new Binary();
@@ -21,7 +21,7 @@ public class Main {
          */
     }
 
-    private void inertaction() {
+    private void interaction() {
         Scanner scanner = new Scanner(System.in);
         boolean continueB = true;
         int inputFrom = 0;
@@ -33,12 +33,12 @@ public class Main {
             inputFrom = getInputFrom(scanner);
             input = getInput(scanner);
             try{
-                Numbersystemsinterface sourceNumbersystem = ftns.makeNumbersystems(inputFrom, input);
+                Numbersystem sourceNumbersystem = ftns.makeNumbersystems(inputFrom, input);
                 inputTo = getInputTo(scanner);
                 String result = ftns.toTarget(inputTo, sourceNumbersystem);
-                System.out.println(input + " in the " + nsIntToString.numbersystemIntToString(inputFrom) + " is " +  result + " in the " + nsIntToString.numbersystemIntToString(inputTo));
+                System.out.println(input + " in the " + ftns.toString() + " is " +  result + " in the " + ftns.numbersystemIntToString(inputTo));
             }catch(NumberFormatException e){
-                System.out.println(input + " is not a valid input for " + nsIntToString.numbersystemIntToString(inputFrom)+ "! Please try again.");
+                System.out.println(input + " is not a valid input for " + ftns.toString() + "! Please try again.");
 
             }
             /*
@@ -101,7 +101,7 @@ public class Main {
     private int getInputFrom(Scanner scanner) {
         int inputFrom;
         do{
-        System.out.print("Wählen Sie das Zahlensystem, in dem Sie die Eingabe mache:\n" +
+        System.out.print("Wählen Sie das Zahlensystem, in dem Sie die Eingabe machen:\n" +
                 "Dezimal: 1\n" +
                 "Hexadedzimal: 2\n" +
                 "Binär: 3\n" +

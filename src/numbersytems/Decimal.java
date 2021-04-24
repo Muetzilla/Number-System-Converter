@@ -1,6 +1,6 @@
 package numbersytems;
 
-public class Decimal extends Numbersystems {
+public class Decimal extends AbstractNumbersystem {
     private final int number;
 
     public Decimal(String decimal){
@@ -11,5 +11,9 @@ public class Decimal extends Numbersystems {
     @Override
     public int getInt() {
         return number;
+    }
+    @Override
+    public String toString(){
+        return "decimal system";
     }
 }

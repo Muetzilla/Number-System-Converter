@@ -1,7 +1,7 @@
 package numbersytems;
 
 public class FromToNumbersystems {
-    public Numbersystemsinterface makeNumbersystems(int sourceSystem, String input) {
+    public Numbersystem makeNumbersystems(int sourceSystem, String input) {
         switch (sourceSystem) {
             case 1:
                 return new Decimal(input);
@@ -16,7 +16,7 @@ public class FromToNumbersystems {
         }
     }
 
-    public String toTarget(int targetSystem, Numbersystemsinterface numbersystems) {
+    public String toTarget(int targetSystem, Numbersystem numbersystems) {
         switch (targetSystem) {
             case 1:
                 return numbersystems.toDecimal();
@@ -28,6 +28,20 @@ public class FromToNumbersystems {
                 return numbersystems.toOctal();
             default:
                 throw new RuntimeException("Invalid target system " + targetSystem);
+        }
+    }
+    public String numbersystemIntToString(int numbersystemAsInt){
+        switch (numbersystemAsInt){
+            case 1:
+                return "decimal system";
+            case 2:
+                return "hexadecimal system";
+            case 3:
+                return "binary system";
+            case 4:
+                return "octal system";
+            default:
+                throw new RuntimeException("Invalid source system " + numbersystemAsInt);
         }
     }
 }

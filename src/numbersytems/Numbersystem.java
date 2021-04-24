@@ -1,6 +1,6 @@
 package numbersytems;
 
-public interface Numbersystemsinterface {
+public interface Numbersystem {
     String toBinary();
     String toDecimal();
     String toOctal();

@@ -1,6 +1,6 @@
 package numbersytems;
 
-public class Octal extends Numbersystems {
+public class Octal extends AbstractNumbersystem {
     private final int number;
 
     public Octal(String octalString){
@@ -10,5 +10,9 @@ public class Octal extends Numbersystems {
     @Override
     public int getInt() {
         return number;
+    }
+    @Override
+    public String toString(){
+        return "octal system";
     }
 }
