@@ -15,7 +15,7 @@ public class SwingVersion extends JFrame implements ActionListener {
     JComboBox targetSystemComboBox;
     JLabel sourceSystemLabel;
     JLabel targetSystemLabel;
-    JLabel resultLabel;
+    JTextField resultTextfield;
     JLabel labelForResult;
     JTextField inputFiled;
     JLabel inputLabel;
@@ -51,11 +51,11 @@ public class SwingVersion extends JFrame implements ActionListener {
         errorLabel = new JLabel();
         errorLabel.setForeground(Color.RED);
         errorLabel.setFont(errorLabel.getFont().deriveFont(16f));
-        resultLabel = new JLabel();
-        resultLabel.setBackground(Color.lightGray);
-        resultLabel.setOpaque(true);
-        //resultLabel.setForeground(Color.ORANGE);
-        resultLabel.setFont(resultLabel.getFont().deriveFont(16f));
+        resultTextfield = new JTextField();
+        resultTextfield.setBackground(Color.lightGray);
+        resultTextfield.setOpaque(true);
+        resultTextfield.setFont(resultTextfield.getFont().deriveFont(16f));
+        resultTextfield.setEditable(false);
         labelForResult = new JLabel("Your convertet number : ");
         copyButton = new JButton("Copy the result");
         add(content);
@@ -68,7 +68,7 @@ public class SwingVersion extends JFrame implements ActionListener {
         content.add(inputFiled);
         content.add(convertButton);
         content.add(labelForResult);
-        content.add(resultLabel);
+        content.add(resultTextfield);
         content.add(copyButton);
         convertButton.addActionListener(this);
         copyButton.addActionListener(this);
@@ -84,7 +84,6 @@ public class SwingVersion extends JFrame implements ActionListener {
         if (e.getSource() == convertButton) {
             if (inputFiled.getText().isEmpty()) {
                 errorLabel.setText("No input! Please enter a number");
-                System.out.println("IS EMPTY");
             } else {
                 errorLabel.setText("");
                 String input = inputFiled.getText();
@@ -96,15 +95,13 @@ public class SwingVersion extends JFrame implements ActionListener {
                 try {
                     Numbersystem sourceNumbersystem = ftns.makeNumbersystems(sourceSystem, input);
                     result = ftns.toTarget(targetSystem, sourceNumbersystem);
-                    resultLabel.setText(result);
+                    resultTextfield.setText(result);
                 } catch (NumberFormatException ex) {
                     errorLabel.setText(input + " is a invalid input in the " + ftns.numbersystemIntToString(sourceSystem));
                 }
-                System.out.println("CONVERT");
             }
 
         } else if (e.getSource() == copyButton) {
-            System.out.println("COPY");
             copyButton.setText("Result copied");
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(result), null);
         }
