@@ -1,8 +1,15 @@
 package numbersytems;
 
 public class Binary implements Numbersystems{
-    public String tobinaer(int dec){
-        String binr = Integer.toBinaryString(dec);
+
+    private final int number;
+
+    public Binary(String binaryString){
+        this.number = Integer.parseInt(binaryString, 2);
+    }
+
+    public String toBinary(){
+        String binr = Integer.toBinaryString(number;
         return binr;
     }
 }

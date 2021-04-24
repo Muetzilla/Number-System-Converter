@@ -2,6 +2,7 @@ package Main;
 
 import numbersytems.Binary;
 import numbersytems.Hex;
+import numbersytems.Numbersystems;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -28,19 +29,9 @@ public class Main {
         String inputBinOctHexDec = "";
         boolean validInput = false;
         do{
-            do{
-            System.out.print("Wählen Sie das Zahlensystem, in dem Sie die Eingabe mache:\n" +
-                    "Dezimal: 1\n" +
-                    "Hexadedzimal: 2\n" +
-                    "Binär: 3\n" +
-                    "Octal: 4\n" +
-                    ">");
-                inputFrom = scanner.nextInt();
-                scanner.nextLine();
-            }while (inputFrom > 4 || inputFrom < 1);
-            do{
-                System.out.print("Geben Sie Ihre Zahl ein >");
-                inputBinOctHexDec = scanner.nextLine();
+            inputFrom = getInputFrom(scanner);
+
+                inputBinOctHexDec = getInput(scanner);
                 switch(inputFrom){
                     case 1:
                         try{
@@ -63,7 +54,7 @@ public class Main {
                         break;
                     case 3:
                         try{
-                            int binr = Integer.parseInt(inputBinOctHexDec, 2);
+                            new Binary(inputBinOctHexDec);
                             System.out.println("Your binary input is in the decimal system: " + binr);
                             System.out.println("Your binary input is: " + inputBinOctHexDec);
                             validInput = true;
@@ -84,23 +75,69 @@ public class Main {
                         }
                         break;
                 }
-            }while(!validInput);
-            validInput = false;
-            do{
-                System.out.print("Wählen Sie das Zahlensystem, in dem Sie die Ausgabe haben möchten:\n" +
-                        "Dezimal: 1\n" +
-                        "Hexadedzimal: 2\n" +
-                        "Binär: 3\n" +
-                        "Octal: 4\n" +
-                        ">");
-                inputTo = scanner.nextInt();
-                scanner.nextLine();
-            }while (inputTo > 4 || inputTo < 1);
+                getInputTo(scanner);
+
             System.out.println("Ausgabe im gewünschten Zahlensystem...");
         }while(continueB);
+    }
+
+    private String getInput(Scanner scanner) {
+        String inputBinOctHexDec;
+        System.out.print("Geben Sie Ihre Zahl ein >");
+        inputBinOctHexDec = scanner.nextLine();
+        return inputBinOctHexDec;
+    }
+
+    private int getInputFrom(Scanner scanner) {
+        int inputFrom;
+        do{
+        System.out.print("Wählen Sie das Zahlensystem, in dem Sie die Eingabe mache:\n" +
+                "Dezimal: 1\n" +
+                "Hexadedzimal: 2\n" +
+                "Binär: 3\n" +
+                "Octal: 4\n" +
+                ">");
+            inputFrom = scanner.nextInt();
+            scanner.nextLine();
+        }while (inputFrom > 4 || inputFrom < 1);
+        return inputFrom;
+    }
+
+    public int getInputTo(Scanner scanner){
+        int inputTo;
+        do{
+            System.out.print("Wählen Sie das Zahlensystem, in dem Sie die Ausgabe haben möchten:\n" +
+                    "Dezimal: 1\n" +
+                    "Hexadedzimal: 2\n" +
+                    "Binär: 3\n" +
+                    "Octal: 4\n" +
+                    ">");
+            inputTo = scanner.nextInt();
+            scanner.nextLine();
+        }while (inputTo > 4 || inputTo < 1);
+        return inputTo;
     }
 
     public static void main(String[] args) {
         new Main();
     }
+
+    private Numbersystems makeNumbersystems(int sourceSystem, String input) {
+        switch (sourceSystem) {
+            case 3:
+                return new Binary(input);
+            default:
+                throw new RuntimeException("Invalid source system " + sourceSystem);
+        }
+    }
+
+    private String toTarget(int targetSystem, Numbersystems numbersystems) {
+        switch (targetSystem) {
+            case 3:
+                return numbersystems.toBinary();
+            default:
+                throw new RuntimeException("Invalid target system " + targetSystem);
+        }
+    }
+
 }
