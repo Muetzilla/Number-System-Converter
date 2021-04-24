@@ -1,6 +1,6 @@
 package numbersytems;
 
-import static java.lang.String.valueOf;
+
 
 public class Hexadecimal extends AbstractNumbersystem {
        /*
