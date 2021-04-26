@@ -30,8 +30,9 @@ public class FromToNumbersystems {
                 throw new RuntimeException("Invalid target system " + targetSystem);
         }
     }
-    public String numbersystemIntToString(int numbersystemAsInt){
-        switch (numbersystemAsInt){
+
+    public String numbersystemIntToString(int numbersystemAsInt) {
+        switch (numbersystemAsInt) {
             case 1:
                 return "decimal system";
             case 2:
@@ -41,7 +42,7 @@ public class FromToNumbersystems {
             case 4:
                 return "octal system";
             default:
-                throw new RuntimeException("Invalid source system " + numbersystemAsInt);
+                throw new RuntimeException("Invalid number system " + numbersystemAsInt);
         }
     }
 }
